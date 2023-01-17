@@ -84,3 +84,39 @@ function somaDefault(n: number, m = 10): number {
 
 console.log(somaDefault(10))
 console.log(somaDefault(15, 12))
+
+// 8 - unknown
+function doSomeThing(x: unknown)  {
+    if(Array.isArray(x)) {
+        console.log(x[0])
+    } else if(typeof x === "number") {
+        console.log("X é um número")
+    }
+}
+
+doSomeThing([1, 2, 3])
+doSomeThing(5)
+
+// 9 - never
+function showErrMessage(msg: string): never {
+    throw new Error(msg)
+}
+
+// showErrMessage("Algum erro!")
+
+// 10 -Rest operator
+function sumAll(...n: number[]){
+    return n.reduce((number, sum) => sum + number)
+}
+
+console.log(sumAll(1, 2, 3, 4, 5))
+console.log(sumAll(4, 456, 3456))
+
+// 11 - destructuring como parametro
+function showProductDetails({name, price}: {name: string, price: number}):string {
+    return `O nome do produto é ${name} e ele custa R$${price}`
+}
+ 
+const shirt = {name: "Camisa", price: 49,99}
+
+console.log(showProductDetails(shirt))
